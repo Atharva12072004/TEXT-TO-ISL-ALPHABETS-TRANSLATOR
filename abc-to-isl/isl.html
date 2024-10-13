@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TEXT TO ISL ALPHABETS TRANSLATOR</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="wrap">
+        <!-- Triangles will be generated here -->
+    </div>
+    <div class="container">
+        <h1 class="title">TEXT TO ISL ALPHABETS TRANSLATOR</h1>
+        <div class="text-output-container">
+            <!-- Input field for text with mic inside (left side) -->
+            <div class="input-with-mic">
+                <div class="input-mic">
+                    <img src="./images/mic.png" id="mic" alt="Mic" onclick="startSpeechRecognition()">
+                </div>
+                <input type="text" id="textInput" placeholder="  Write here..." onkeydown="handleKeyPress(event)">
+            </div>
+            <!-- Button to trigger conversion -->
+            <button onclick="convertToSign()">Convert</button>
+            <!-- Output div where images will be displayed -->
+            <div id="output"></div>
+        </div>
+    </div>
+    <!-- JavaScript files linked -->
+    <script src="script.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r121/three.min.js"></script>
+</body>
+</html>

@@ -1,0 +1,283 @@
+body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: black;
+    overflow: hidden; /* Prevent scrolling */
+}
+
+.wrap {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 0; /* Lower z-index for background triangles */
+    perspective: 1000px;
+    overflow: hidden; /* Prevent background animations from causing scrolling */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Adjusting the size of the background animation to prevent overflow */
+.wrap .triangle {
+    position: absolute;
+    width: 0;
+    height: 0;
+    border-left: 30px solid transparent; /* Reduce size here */
+    border-right: 30px solid transparent;
+    border-bottom: 60px solid rgba(233, 30, 99, 0.7); /* Reduce height here */
+    animation: move 10s infinite linear;
+}
+
+.wrap .triangle:nth-child(2) {
+    border-bottom-color: rgba(0, 188, 212, 0.7);
+    animation-duration: 12s;
+}
+
+.wrap .triangle:nth-child(3) {
+    border-bottom-color: rgba(156, 39, 176, 0.7);
+    animation-duration: 15s;
+}
+
+/* Keyframes to handle triangle animation */
+@keyframes move {
+    from {
+        transform: translateY(0px);
+    }
+    to {
+        transform: translateY(-1000px); /* Adjust height to prevent overflow */
+    }
+}
+
+/* Prevent overflow by containing the animation within the viewport */
+html, body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    overflow: hidden; /* No scrolling */
+}
+
+
+.wrap {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 0; /* Lower z-index for background triangles */
+    perspective: 1000px;
+    overflow: hidden; /* Prevent background animations from causing scrolling */
+}
+
+/* Container setup */
+.container {
+    position: relative;
+    z-index: 10; /* Ensure the white box is above the triangles */
+    text-align: center;
+    max-width: 800px;
+    background-color: white;
+    padding: 30px 30px;
+    border-radius: 15px;
+    box-shadow: 0px 0px 15px rgba(255, 0, 0, 255);
+    margin: 20px 0;
+}
+
+.title {
+    color: black;
+    font-size: 2em;
+    font-weight: bold;
+    text-transform: uppercase;
+    background: -webkit-linear-gradient(#f953c6, #b91d73);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin-bottom: 20px;
+}
+
+/* Prevent container overflow in mobile */
+.text-output-container {
+    background-color: #000000;
+    padding: 30px;
+    border-radius: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    box-shadow: 0px 0px 15px rgba(255, 0, 0, 255);
+    overflow: hidden; /* Prevent overflow */
+}
+
+/* Text input field and mic button together */
+.input-with-mic {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    max-width: 500px;
+    margin-bottom: 20px;
+    background-color: #eee;
+    border-radius: 8px;
+    padding: 10px;
+}
+
+input[type="text"] {
+    flex: 1;
+    padding: 15px;
+    font-size: 18px;
+    border: none;
+    background-color: transparent;
+    color: black;
+    outline: none;
+}
+
+#mic {
+    width: 40px;
+    height: 40px;
+    cursor: pointer;
+    margin-left: 10px;
+    transition: 0.3s;
+}
+
+#mic.glowing {
+    filter: drop-shadow(0px 0px 10px #e91e63);
+}
+
+/* Button styling */
+button {
+    padding: 15px 30px;
+    margin-bottom: 20px;
+    background-color: #e91e63;
+    color: white;
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+    font-size: 18px;
+    box-shadow: 0px 3px 10px rgba(233, 30, 99, 0.3);
+}
+
+button:hover {
+    background-color: lightblue;
+    color: #000;
+    transform: scale(1.05);
+}
+
+/* Output container */
+#output {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+    padding: 10px;
+    background-color: #ff7979;
+    border-radius: 15px;
+    width: 100%;
+    max-width: 600px;
+    max-height: 300px;
+    overflow-y: auto;
+}
+
+/* Word container */
+.word-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #323232;
+    padding: 10px;
+    border-radius: 8px;
+    box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.3);
+}
+
+.word-container h2 {
+    margin: 0 0 10px 0;
+    font-size: 18px;
+    color: #f5f5f5;
+}
+
+.word-container .images-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+}
+
+.word-container img {
+    width: 70px;
+    height: 70px;
+    border: 1px solid #ddd;
+    background-color: white;
+    padding: 5px;
+    border-radius: 5px;
+    box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Scrollbar customization */
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: #e91e63;
+    border-radius: 10px;
+}
+
+::-webkit-scrollbar-track {
+    background-color: #2e2e2e;
+}
+
+/* Mobile media query */
+@media (max-width: 768px) {
+    h1 {
+        font-size: 2rem;
+    }
+    
+    #mic {
+        width: 30px; /* Smaller size for mobile */
+        height: 30px;
+    }
+
+    input[type="text"] {
+        font-size: 16px;
+        padding: 10px;
+    }
+
+    .input-with-mic {
+        padding: 8px;
+    }
+    
+    button {
+        padding: 10px 20px;
+    }
+
+    #output {
+        width: 95%; /* Adjust width for mobile */
+        max-width: 400px;
+        max-height: 250px;
+    }
+}
+/* Triangle Styling */
+.tri {
+    position: absolute;
+    width: 0;
+    height: 0;
+    border-left: 5px solid transparent; /* Reduced size */
+    border-right: 5px solid transparent; /* Reduced size */
+    border-bottom: 10px solid lightgray; /* Light gray color */
+    transform-origin: 50% 50%;
+    animation: randomMovement 10s infinite ease-in-out;
+    opacity: 0.8;
+}
+
+/* Keyframes for random movement */
+@keyframes randomMovement {
+    0% { transform: translate(0, 0) rotate(0deg); }
+    25% { transform: translate(150px, 100px) rotate(180deg); }
+    50% { transform: translate(-200px, -150px) rotate(360deg); }
+    75% { transform: translate(250px, -100px) rotate(540deg); }
+    100% { transform: translate(0, 0) rotate(720deg); }
+}
